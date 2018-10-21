@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import matplotlib.pyplot as plt
+import numpy as np
 from model.model import *
 
 data_dir = os.path.join(os.getcwd(), 'data', 'data2')
