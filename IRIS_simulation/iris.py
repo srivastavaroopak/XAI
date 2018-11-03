@@ -51,7 +51,7 @@ mins = np.amin(x, axis=0)
 maxes = np.amax(x, axis=0)
 
 print (mins, maxes)
-rand_examples = 1500
+rand_examples = 1000
 rand_data = []
 
 for i in range(len(mins)):
@@ -87,13 +87,17 @@ tsne_all = TSNE(n_components=2).fit_transform(X_all)
 tsne_orig = tsne_all[0:150,:]
 tsne_res = tsne_all[150:,:]
 
-plt.scatter(tsne_orig[:,0], tsne_orig[:,1], c=y_labelled, cmap=plt.cm.get_cmap("prism", 3))
+# this is the Second colourbar
+plt.scatter(tsne_orig[:,0], tsne_orig[:,1], c=res_orig_y, cmap=plt.cm.get_cmap("prism", 3))
 plt.colorbar(ticks=range(3))
 
-plt.scatter(tsne_res[:,0], tsne_res[:,1], c=res_rand_y, cmap=plt.cm.get_cmap("Blues", 3))
+# this is the first colourbar
+plt.scatter(tsne_res[:,0], tsne_res[:,1], c=res_rand_y, cmap=plt.cm.get_cmap("jet", 3), alpha = 0.2)
 plt.colorbar(ticks=range(3))
-
+plt.title("tSNE reduced overlapped random(alpha = 0.2) and original dataset")
+plt.savefig("Iris.png")
 plt.show()
+
 
 # # plt.subplot(122)
 # # print res
